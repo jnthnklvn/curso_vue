@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estilo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="caixas">
+            <div class="demo" :class="[estilo1, {girar: aplicarGirar}]" @click="[aplicarC1 = !aplicarC1, aplicarGirar = !aplicarGirar]"></div>
+            <div class="demo" :class="{ c1: !aplicarC1, c2: aplicarC1, girar: !aplicarGirar }"></div>
+            <div class="demo" :class="[ {c2: !aplicarC1}, classeCSS, {girar: aplicarGirar}]"></div>
+        </div>
+        <hr>
+        <input type="text" v-model="classeCSS">
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
