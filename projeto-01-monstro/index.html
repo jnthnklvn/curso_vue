@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Matador de Monstro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="panel scores">
+            <div class="score">
+                <h1>Jogador</h1>
+                <p>Ataque base: {{ playerPower.toFixed(2) }}</p>
+                <p>Poder de cura: {{ playerHeal.toFixed(2) }}x</p>
+                <div class="life-bar">
+                    <div class="life" :class="{danger: playerLife < 20}" :style="{width: playerLife + '%'}"></div>
+                </div>
+                <div>{{ playerLife.toFixed(2) }}%</div>
+            </div>
+            <div class="score">
+                <h1>Monstro</h1>
+                <p>Ataque base: {{ monsterPower.toFixed(2) }}</p>
+                <p>Poder de cura: {{ monsterHeal.toFixed(2) }}</p>
+                <div class="life-bar">
+                    <div class="life" :class="{danger: monsterLife < 20}" :style="{width: monsterLife + '%'}"></div>
+                </div>
+                <div>{{ monsterLife.toFixed(2) }}%</div>
+            </div>
+        </div>
+        <div v-if="hasResult" class="panel result">
+            <div v-if="monsterLife == 0" class="win">Você ganhou!</div>
+            <div v-else class="lose">Você perdeu!</div>
+        </div>
+        <div class="panel buttons">
+            <template v-if="runningGame">
+                <div class="tooltip">
+                    <button @click="attack" class="bttn attack">Ataque Normal</button>
+                    <span class="tooltiptext">
+                        Dano: Entre {{ playerPower.toFixed(2) }} e {{ playerPower.toFixed(2) }}*2
+                    </span>
+                </div>
+                <div class="tooltip">
+                    <button @click="attack(true)" class="bttn especial-attack">Ataque Especial</button>
+                    <span class="tooltiptext">
+                        Dano: (entre {{ playerPower.toFixed(2) }} e {{ playerPower.toFixed(2) }}*2)*(2 ou 3)
+                    </span>
+                </div>
+                <div class="tooltip">
+                    <button @click="hurtAndAbsorb" class="bttn absorb">Absorver Ataque</button>
+                    <span class="tooltiptext">
+                        Cura: (Entre {{ monsterPower.toFixed(2) }} e
+                        {{ monsterPower.toFixed(2) }}*2)*{{ playerHeal.toFixed(2) }}
+                    </span>
+                </div>
+                <button class="bttn give-up" @click="runningGame = false">Desistir</button>
+            </template>
+            <button v-else @click="runGame" class="bttn new-game">Iniciar Jogo</button>
+        </div>
+        <div v-if="logs.length" class="panel logs">
+            <ul>
+                <li v-for="log in logs" class="log" :class="log.style">{{log.text}}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+
+    <footer>
+        <p>&copy; Curso Vue JS 2, Udemy</p>
+    </footer>
+</body>
+
+</html>
