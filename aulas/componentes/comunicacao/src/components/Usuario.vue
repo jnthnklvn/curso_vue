@@ -6,11 +6,24 @@
       Nome é
       <strong>{{ nome }}</strong>
     </p>
+    <p>
+      Idade é
+      <strong>{{ idade }}</strong>
+    </p>
     <button @click="alterarNome">Alterar Nome</button>
     <hr />
     <div class="componentes">
-      <app-usuario-info :nome="nome" @nomeMudou="nome = $event.novo" :reiniciarFn="reiniciarNome" />
-      <app-usuario-editar />
+      <app-usuario-info
+        :nome="nome"
+        :idade="idade"
+        @nomeMudou="nome = $event.novo"
+        :reiniciarFn="reiniciarNome"
+      />
+      <app-usuario-editar
+        :idade="idade"
+        @idadeMudou="idade = $event + 1"
+        :reiniciarFi="reiniciarIdade"
+      />
     </div>
   </div>
 </template>
@@ -23,7 +36,8 @@ export default {
   components: { AppUsuarioInfo, AppUsuarioEditar },
   data() {
     return {
-      nome: "Pedro"
+      nome: "Pedro",
+      idade: 21
     };
   },
   methods: {
@@ -32,6 +46,9 @@ export default {
     },
     reiniciarNome() {
       this.nome = "Pedro";
+    },
+    reiniciarIdade() {
+      this.idade = 33;
     }
   }
 };
