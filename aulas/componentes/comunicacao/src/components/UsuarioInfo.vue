@@ -48,7 +48,7 @@ export default {
     }
   },
   created() {
-    barramento.$on("idadeMudou", idade => {
+    barramento.onIdadeChange(idade => {
       this.idade = idade;
     });
   }

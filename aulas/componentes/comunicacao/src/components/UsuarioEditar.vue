@@ -22,7 +22,7 @@ export default {
     alterarIdade() {
       this.idade++;
       /* this.$emit("idadeMudou", 33); */
-      barramento.$emit("idadeMudou", this.idade);
+      barramento.alterarIdade(this.idade);
     }
   }
 };
