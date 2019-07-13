@@ -18,4 +18,8 @@ export default {
         padding: 25px;
         max-width: 450px;
     }
+
+    h1{
+        color: #032703!important;
+    }
 </style>
