@@ -6,16 +6,23 @@
       Nome do Usuário
       <strong>{{ inverterNome() }}</strong>
     </p>
+    <button @click="reiniciarNome">Reiniciar Nome</button>
+    <button @click="reiniciarFn">Reiniciar Nome (Callback)</button>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    nome: /* String */{
-        type: String,
-        required: true,
-    }
+    nome: /* String */ {
+      type: String,
+      /* required: true, */
+      default: "Clara"
+      /* default: function () {
+            return Array(10).fill(0).join(',')
+        } */
+    },
+    reiniciarFn: Function
   },
   methods: {
     inverterNome() {
@@ -23,6 +30,15 @@ export default {
         .split("")
         .reverse()
         .join("");
+    },
+    reiniciarNome() {
+      const antigo = this.nome;
+      this.nome = "Pedro";
+      /* this.$emit("nomeMudou", this.nome); */
+      this.$emit("nomeMudou", {
+        novo: this.nome,
+        antigo
+      });
     }
   }
 };
