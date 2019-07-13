@@ -24,6 +24,7 @@ export default {
   methods: {
     alterarUsuario(usuario) {
       barramento.alterarUsuario(usuario);
+      this.usuarios.pop();
     }
   }
 };
