@@ -1,6 +1,8 @@
 <template>
     <div class="citacao">
-        <slot></slot>
+        <slot name="texto"></slot>
+        <slot name="autor"></slot>
+        <slot name="fonte"></slot>
         <!-- <p>{{ citacao.texto }}</p> -->
     </div>
 </template>
