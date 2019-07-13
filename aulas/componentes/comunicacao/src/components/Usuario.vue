@@ -19,16 +19,13 @@
         @nomeMudou="nome = $event.novo"
         :reiniciarFn="reiniciarNome"
       />
-      <app-usuario-editar
-        :idade="idade"
-        @idadeMudou="idade = $event + 1"
-        :reiniciarFi="reiniciarIdade"
-      />
+      <app-usuario-editar :idade="idade" :reiniciarFi="reiniciarIdade" />
     </div>
   </div>
 </template>
 
 <script>
+/* @idadeMudou="idade = $event + 1" */
 import AppUsuarioInfo from "./UsuarioInfo";
 import AppUsuarioEditar from "./UsuarioEditar";
 

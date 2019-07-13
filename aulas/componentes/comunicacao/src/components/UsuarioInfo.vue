@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import barramento from "@/barramento";
 export default {
   props: {
     nome: /* String */ {
@@ -27,7 +28,7 @@ export default {
         } */
     },
     reiniciarFn: Function,
-    idade: Number,
+    idade: Number
   },
   methods: {
     inverterNome() {
@@ -45,6 +46,11 @@ export default {
         antigo
       });
     }
+  },
+  created() {
+    barramento.$on("idadeMudou", idade => {
+      this.idade = idade;
+    });
   }
 };
 </script>
