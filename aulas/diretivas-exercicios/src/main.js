@@ -6,13 +6,20 @@ Vue.config.productionTip = false
 Vue.directive('destaque', {
 	bind(el, binding, vnode) {
 		//el.style.backgroundColor = 'lightgreen'
-		if (binding.arg === 'fundo') {
-			el.style.backgroundColor = binding.value
-		}
-		//el.style.backgroundColor = 'lightgreen'
-		else {
-			el.style.color = binding.value
-		}
+		let atraso = 0
+
+		if (binding.modifiers['atrasar']) atraso = 2000
+
+		setTimeout(() => {
+			if (binding.arg === 'fundo') {
+				el.style.backgroundColor = binding.value
+			}
+			//el.style.backgroundColor = 'lightgreen'
+			else {
+				el.style.color = binding.value
+			}
+		}, atraso)
+
 	}
 })
 
