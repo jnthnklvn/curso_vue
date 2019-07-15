@@ -5,7 +5,7 @@
     <p v-text="'Texto usando v-text'"></p>
     <p v-html="'Texto usando <strong>v-html</strong>'"></p>
     <hr />
-    <p v-destaque="'lightgreen'">Usando diretiva personalizada</p>
+    <p v-destaque:fundo="'lightgreen'">Usando diretiva personalizada</p>
     <p v-destaque="cor">Usando diretiva personalizada</p>
   </div>
 </template>
@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      cor: "red"
+      cor: "lightblue"
     };
   }
 };
