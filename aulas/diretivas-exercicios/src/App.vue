@@ -5,8 +5,8 @@
     <p v-text="'Texto usando v-text'"></p>
     <p v-html="'Texto usando <strong>v-html</strong>'"></p>
     <hr />
-    <p v-destaque-local:fundo.atrasar="'lightgreen'">Usando diretiva personalizada</p>
-    <p v-destaque-local.atrasar.alternar="cor">Usando diretiva personalizada</p>
+    <p v-destaque-local:fundo.atrasar.alternar="{cor1: 'green', cor2: 'red', atraso: 2000, intervalo: 200}">Usando diretiva personalizada</p>
+    <p v-destaque-local.atrasar.alternar="{cor1: 'red', atraso: 3000}">Usando diretiva personalizada</p>
   </div>
 </template>
 
@@ -27,10 +27,10 @@ export default {
 
         let atraso = 0;
 
-        if (binding.modifiers["atrasar"]) atraso = 2000;
+        if (binding.modifiers["atrasar"]) atraso = binding.value.atraso;
 
-        let cor1 = binding.value;
-        let cor2 = "purple";
+        let cor1 = binding.value.cor1;
+        let cor2 = binding.value.cor2;
         let corAtual = cor1;
 
         setTimeout(() => {
@@ -38,9 +38,9 @@ export default {
             setInterval(() => {
               corAtual = corAtual === cor1 ? cor2 : cor1;
               aplicarCor(corAtual);
-            }, 1000);
+            }, binding.value.intervalo);
           } else {
-            aplicarCor(binding.value);
+            aplicarCor(binding.value.cor1);
           }
         }, atraso);
       }
