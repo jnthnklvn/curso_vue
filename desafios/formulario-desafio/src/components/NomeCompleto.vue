@@ -1,14 +1,10 @@
 <template>
   <div>
     <Rotulo nome="Nome">
-      <input @change="$emit('input', nomeCompleto)" type="text" v-model="nomeCompleto.nome" />
+      <input type="text" @input="alterarNome" :value="value.nome" />
     </Rotulo>
     <Rotulo nome="Sobrenome">
-      <input
-        @change="$emit('input', nomeCompleto)"
-        type="text"
-        v-model="nomeCompleto.sobrenome"
-      />
+      <input type="text" @input="alterarSobrenome" :value="value.sobrenome" />
     </Rotulo>
   </div>
 </template>
@@ -17,13 +13,25 @@
 import Rotulo from "@/components/Rotulo.vue";
 export default {
   components: { Rotulo },
-  data() {
-    return {
-      nomeCompleto: {
-        nome: "",
-        sobrenome: ""
-      }
-    };
+  props: {
+    value: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    alterarNome(event) {
+      this.$emit("input", {
+        nome: event.target.value,
+        sobrenome: this.value.sobrenome
+      });
+    },
+    alterarSobrenome(event) {
+      this.$emit("input", {
+        nome: this.value.nome,
+        sobrenome: event.target.value
+      });
+    }
   }
 };
 </script>
