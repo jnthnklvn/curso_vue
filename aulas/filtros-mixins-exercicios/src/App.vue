@@ -3,12 +3,24 @@
     <h1>Filtros & Mixins</h1>
     <hr />
     <p>{{ cpf | cpf | inverter}}</p>
-	<input type="text" :value="cpf | cpf | inverter">
+    <input type="text" :value="cpf | cpf | inverter" />
+    <hr />
+    <Frutas />
+    <div>
+      <ul>
+        <li v-for="fruta in frutas" :key="fruta">{{ fruta }}</li>
+      </ul>
+      <input type="text" v-model="fruta" @keydown.enter="add" />
+    </div>
   </div>
 </template>
 
 <script>
+import Frutas from "@/components/Frutas.vue";
+import FrutasMixin from "@/frutasMixin";
 export default {
+  components: { Frutas },
+  mixins: [FrutasMixin],
   filters: {
     cpf(valor) {
       const arr = valor.split("");
@@ -37,7 +49,7 @@ export default {
   font-size: 2.5rem;
 }
 
-input{
-	font-size: 2.5rem;
+input {
+  font-size: 2.5rem;
 }
 </style>
