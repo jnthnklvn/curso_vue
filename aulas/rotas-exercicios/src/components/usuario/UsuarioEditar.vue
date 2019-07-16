@@ -7,6 +7,14 @@
       {{ id }}
     </p>
     <p>
+      <strong>Completo</strong>
+      {{ $route.query.completo ? 'Sim' : 'Nao' }}
+    </p>
+    <p>
+      <strong>Completo</strong>
+      {{ $route.query.lingua }}
+    </p>
+    <p>
       <strong>Codigo</strong>
       $route {{ $route.params.id }}
     </p>
