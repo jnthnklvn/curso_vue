@@ -6,6 +6,10 @@
       <strong>Codigo</strong>
       {{ id }}
     </p>
+    <p>
+      <strong>Codigo</strong>
+      $route {{ $route.params.id }}
+    </p>
   </div>
 </template>
 
