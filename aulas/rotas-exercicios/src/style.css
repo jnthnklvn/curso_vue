@@ -55,6 +55,7 @@ button {
 }
 
 [sucesso] {
+    cursor: pointer;
     color: #FFF;
     background-color: #47af55;
 }
