@@ -5,6 +5,13 @@
     <p>{{ cpf | cpf | inverter}}</p>
     <input type="text" :value="cpf | cpf | inverter" />
     <hr />
+    <input type="text" :value="itens | espacoToVirgula" />
+    <p>{{ itens | espacoToVirgula}}</p>
+    <p>{{ itens | contarTamanhoPalavras}}</p>
+    <hr>
+    <input type="text" v-model="items">
+    <p>{{ itemsComVirgulas }}</p>
+    <hr />
     <Frutas />
     <div>
       <ul>
@@ -28,13 +35,19 @@ export default {
       arr.splice(7, 0, ".");
       arr.splice(11, 0, "-");
       return arr.join("");
+    },
+    espacoToVirgula(valor) {
+      const arr = valor.split(" ");
+      return arr.toString();
     }
   },
   data() {
     return {
-      cpf: "07918533578"
+      cpf: "07918533578",
+      itens: "Eu você e o zubumafu",
+      items: "bola carro luz"
     };
-  }
+  },
 };
 </script>
 
