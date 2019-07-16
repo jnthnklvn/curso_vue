@@ -22,6 +22,11 @@ export default {
       this.$router.push("/");
       /* this.$router.push({ path: "/" }); */
     }
+  },
+  watch: {
+    $route(to, from) {
+      this.id = to.params.id;
+    }
   }
 };
 </script>
