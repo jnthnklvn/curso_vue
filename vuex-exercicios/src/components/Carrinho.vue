@@ -29,11 +29,11 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(['valorTotal']),
+    ...mapGetters({total: 'valorTotal'}),
     /* total() {
       return this.$store.getters.valorTotal
     }, */
