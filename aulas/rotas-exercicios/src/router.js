@@ -10,8 +10,18 @@ import UsuarioDetalhe from '@/components/usuario/UsuarioDetalhe'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     mode: 'history',
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        }
+        else if (to.hash) {
+            return { selector: to.hash }
+        } else {
+            return { x: 0, y: 1000 }
+        }
+    },
     routes: [{
         name: 'inicio',
         path: '/',
@@ -33,6 +43,10 @@ export default new Router({
         }, {
             path: ':id',
             component: UsuarioDetalhe,
+            beforeEnter: (to, from, next) => {
+                console.log('antes da rota -> usuario detalhe')
+                next()
+            },
             props: true
         }, {
             path: ':id/editar',
@@ -48,3 +62,10 @@ export default new Router({
         redirect: '/'
     },]
 })
+
+router.beforeEach((to, from, next) => {
+    console.log('antes das rotas -> global')
+    next()
+})
+
+export default router
