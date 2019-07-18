@@ -31,10 +31,10 @@ export default {
     }
   },
   methods: {
-    /* ...mapActions(['adicionarProduto']), */
-    adicionarProduto(produto) {
+    ...mapActions("carrinho", ["adicionarProduto"]),
+    /* adicionarProduto(produto) {
       this.$store.dispatch("adicionarProduto", produto);
-    },
+    }, */
     adicionar() {
       const produto = {
         id: this.sequencia,
