@@ -19,21 +19,21 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      sequencia: 1,
+      sequencia: 1
     };
   },
   computed: {
-      quantidade(){
-          return this.$store.state.parametros.quantidade
-      },
-      preco(){
-          return this.$store.state.parametros.preco
-      }
+    quantidade() {
+      return this.$store.state.parametros.quantidade;
+    },
+    preco() {
+      return this.$store.state.parametros.preco;
+    }
   },
   methods: {
     /* ...mapActions(['adicionarProduto']), */
-    adicionarProduto(produto){
-        this.$store.dispatch("adicionarProduto", produto);
+    adicionarProduto(produto) {
+      this.$store.dispatch("adicionarProduto", produto);
     },
     adicionar() {
       const produto = {
@@ -46,6 +46,8 @@ export default {
       /* this.$store.state.produtos.push(produto) */
       /* this.$store.commit("adicionarProduto", produto); */
       this.adicionarProduto(produto);
+      console.log(this.$store.getters.getNome);
+      console.log(this.$store.getters.getNomeCompleto);
       /* this.$store.commit("adicionarProduto", produto); */
       /* this.$store.dispatch("adicionarProduto", produto); */
     }
